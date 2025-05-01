@@ -138,6 +138,13 @@ document.addEventListener("DOMContentLoaded", function () {
             }, 50);
             savePlansToStorage()
         });
+
+        const exportBtn = document.createElement("button");
+        exportBtn.className = "export-button";
+        exportBtn.innerText = "Export";
+        exportBtn.addEventListener("click", () => {
+            //Figure out later
+        })
         
 
         const deleteBtn = document.createElement("button");
@@ -161,6 +168,7 @@ document.addEventListener("DOMContentLoaded", function () {
         card.appendChild(titleDiv);
         card.appendChild(viewBtn);
         card.appendChild(copyBtn);
+        card.appendChild(exportBtn);
         card.appendChild(deleteBtn);
         
         return card;
