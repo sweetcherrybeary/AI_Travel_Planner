@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const checklistItems = checklistText.split("\n");
 
             checklistItems.forEach(item => {
-                doc.text(item, 10, y);
+                doc.text(item.slice(5), 10, y);
                 y += 8;
             });
         
