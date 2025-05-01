@@ -143,7 +143,19 @@ document.addEventListener("DOMContentLoaded", function () {
         exportBtn.className = "export-button";
         exportBtn.innerText = "Export";
         exportBtn.addEventListener("click", () => {
-            //Figure out later
+            const beforeCount = document.querySelectorAll('.plan-card:not(.add-plan-card)').length;
+            const originalTitle = titleDiv.innerText;
+            const originalImgSrc = img.src;
+            const originalChecklist = card.dataset.checklist;
+            const originalInterests = card.dataset.interests;
+        
+            const copy = createPlanCard(originalTitle, originalImgSrc, originalChecklist, originalInterests);
+            gallery.insertBefore(copy, addBtn);
+        
+            setTimeout(() => {
+                testCopyPlan(beforeCount, originalTitle, originalImgSrc);
+            }, 50);
+            savePlansToStorage()
         })
         
 
