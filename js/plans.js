@@ -163,11 +163,13 @@ document.addEventListener("DOMContentLoaded", function () {
             // Split the checklist text into individual lines
             const checklistItems = checklistText.split("\n");
 
-            // Loop through each line and add it to the PDF
             checklistItems.forEach(item => {
-                doc.text(item, 10, y);  // Directly add the text, which includes the checkbox symbols (✓ or ◻)
+                let cleanedItem = item.replace(/^%û\s?/, '')  // Remove "%û" and optional space
+                                      .replace(/^'\s?/, '');  // Remove "'" and optional space
+            
+                doc.text(cleanedItem, 10, y);
                 y += 8;
-        });
+            });
         
             y += 10;
             doc.setFontSize(12);
