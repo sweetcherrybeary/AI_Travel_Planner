@@ -146,26 +146,26 @@ document.addEventListener("DOMContentLoaded", function () {
             const { jsPDF } = window.jspdf;
 
             const originalTitle = titleDiv.innerText;
-            const checklistItems = card.querySelectorAll('.checklist li');
+            const checklistText = card.dataset.checklist;
             const originalInterests = card.dataset.interests;
         
             const doc = new jsPDF();
             let y = 10;
         
-            doc.setFontSize(16);
-            doc.text(`Title: ${originalTitle}`, 10, y);
-            y += 10;
+            doc.setFontSize(24);
+            doc.text(`${originalTitle}`, 10, y);
+            y += 15;
         
             doc.setFontSize(12);
             doc.text("Checklist:", 10, y);
             y += 8;
 
+            // Split the checklist text into individual lines
+            const checklistItems = checklistText.split("\n");
+
+            // Loop through each line and add it to the PDF
             checklistItems.forEach(item => {
-                const checkbox = item.querySelector('input[type="checkbox"]');
-                const text = item.querySelector('input[type="text"]').value; // Getting the text value
-        
-                const checkboxSymbol = checkbox.checked ? "☑" : "☐";
-                doc.text(`${checkboxSymbol} ${text}`, 10, y);
+                doc.text(item, 10, y);  // Directly add the text, which includes the checkbox symbols (✓ or ◻)
                 y += 8;
             });
         
