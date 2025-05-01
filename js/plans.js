@@ -153,14 +153,14 @@ document.addEventListener("DOMContentLoaded", function () {
             doc.setFont("NotoSans-VariableFont_wdth,wght")
             let y = 10;
         
-            doc.setFontSize(24);
+            doc.setFontSize(36);
             const pageWidth = doc.internal.pageSize.getWidth();      // e.g. 210 for A4
             const textWidth = doc.getTextWidth(originalTitle);       // dynamic width of the title
             const x = (pageWidth - textWidth) / 2;                    // horizontal center
             doc.text(`${originalTitle}`, x, y);
             y += 15;
         
-            doc.setFontSize(18);
+            doc.setFontSize(24);
             doc.text("Checklist:", 10, y);
             y += 8;
 
