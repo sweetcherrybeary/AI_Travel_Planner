@@ -164,15 +164,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const checklistItems = checklistText.split("\n");
 
             checklistItems.forEach(item => {
-                let text = item;
-        
-                if (item.startsWith("%û")) {
-                    text = item.substring(2).trim();  // Remove "%û"
-                } else if (item.startsWith("'")) {
-                    text = item.substring(1).trim();  // Remove "'"
-                }
-        
-                doc.text(`${text}`, 10, y);
+                doc.text(item.slice(1), 10, y);  // Directly add the text, which includes the checkbox symbols (✓ or ◻)
                 y += 8;
             });
         
