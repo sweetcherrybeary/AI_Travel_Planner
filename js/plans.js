@@ -173,7 +173,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 y += 8;
             });
         
-            y += 10;
+            y += 5;
             doc.setFontSize(12);
             doc.text(`${originalInterests}`, 10, y);
         
