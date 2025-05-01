@@ -159,8 +159,19 @@ document.addEventListener("DOMContentLoaded", function () {
             doc.setFontSize(12);
             doc.text("Checklist:", 10, y);
             y += 8;
-        
-            doc.text(`${originalChecklist}`, 10, y);
+            
+            let checklist;
+            try {
+                checklist = JSON.parse(originalChecklist);
+                checklist.forEach(item => {
+                    const checkbox = item.checked ? "☑" : "☐";
+                    doc.text(`${checkbox} ${item.text}`, 10, y);
+                    y += 8;
+                });
+            } catch (err) {
+                doc.text("Invalid checklist format", 10, y);
+                y += 8;
+            }
         
             y += 50;
             doc.setFontSize(12);
