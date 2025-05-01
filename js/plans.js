@@ -159,7 +159,7 @@ document.addEventListener("DOMContentLoaded", function () {
         
             doc.setFontSize(12);        
             doc.text(`Checklist: \n ${originalChecklist}`, 10, y);
-            y += 10;
+            y += 150;
         
             doc.text(`Interests: ${originalInterests}`, 10, y);
         
