@@ -150,6 +150,9 @@ document.addEventListener("DOMContentLoaded", function () {
             const originalInterests = card.dataset.interests;
         
             const doc = new jsPDF();
+            doc.addFileToVFS("NotoSans-Regular.ttf", notoSansFontBase64);
+            doc.addFont("NotoSans-Regular.ttf", "NotoSans", "normal");
+            doc.setFont("NotoSans"); // use the font
             let y = 10;
         
             doc.setFontSize(24);
@@ -164,10 +167,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const checklistItems = checklistText.split("\n");
 
             checklistItems.forEach(item => {
-                let cleanedItem = item.replace(/^◻\s?/, '')
-                                      .replace(/^✓\s?/, '');
-            
-                doc.text(cleanedItem, 10, y);
+                doc.text(item, 10, y);
                 y += 8;
             });
         
