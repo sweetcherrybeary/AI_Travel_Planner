@@ -147,6 +147,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const originalTitle = titleDiv.innerText;
             const originalChecklist = card.dataset.checklist;
+            const checklistOutput = originalChecklist.map(item => `${item.checked ? '✓' : '◻'} ${item.text}`).join('\n');
             const originalInterests = card.dataset.interests;
         
             const doc = new jsPDF();
@@ -158,23 +159,12 @@ document.addEventListener("DOMContentLoaded", function () {
             y += 10;
         
             doc.setFontSize(12);        
-            doc.text("Checklist:", 10, y);
-            y += 8;
+            doc.text('Checklist:', 10, y);
+            y += 10;
 
-            try {
-               const checklistArray = JSON.parse(originalChecklist); // should be [[item, completed], ...]
-                checklistArray.forEach(([checked, item]) => {
-                    const symbol = checked === true ? "☑" : "☐";
-                    doc.text(`${symbol} ${item}`, 15, y);
-                    y += 8;
-                });
-            } catch (e) {
-                doc.text("Error parsing checklist.", 15, y);
-                y += 8;
-            }
+            doc.text('${checklistOutput', 10, y);
+            y += 10;
 
-            y += 5;
-        
             doc.text(`${originalInterests}`, 10, y);
         
             // Save the PDF
