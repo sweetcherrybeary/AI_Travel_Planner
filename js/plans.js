@@ -150,6 +150,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const originalInterests = card.dataset.interests;
         
             const doc = new jsPDF();
+            doc.addFont("NotoSans-VariableFont_wdth,wght");
             let y = 10;
         
             doc.setFontSize(36);
