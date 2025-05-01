@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const { jsPDF } = window.jspdf;
 
             const originalTitle = titleDiv.innerText;
-            const checklistText = viewChecklistContent.textContent;
+            const checklistText = card.dataset.checklist;
             const originalInterests = card.dataset.interests;
         
             const doc = new jsPDF();
@@ -163,9 +163,19 @@ document.addEventListener("DOMContentLoaded", function () {
             // Split the checklist text into individual lines
             const checklistItems = checklistText.split("\n");
 
-            // Loop through each line and add it to the PDF
             checklistItems.forEach(item => {
-                doc.text(item, 10, y);  // Directly add the text, which includes the checkbox symbols (✓ or ◻)
+                let checkboxSymbol = "☐"; // Default to unchecked
+                let text = item;
+        
+                if (item.startsWith("%û")) {
+                    checkboxSymbol = "☐";
+                    text = item.substring(2).trim();  // Remove "%û"
+                } else if (item.startsWith("'")) {
+                    checkboxSymbol = "☑";
+                    text = item.substring(1).trim();  // Remove "'"
+                }
+        
+                doc.text(`${checkboxSymbol} ${text}`, 10, y);
                 y += 8;
             });
         
