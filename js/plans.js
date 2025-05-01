@@ -160,13 +160,14 @@ document.addEventListener("DOMContentLoaded", function () {
             doc.text(`${originalTitle}`, x, y);
             y += 15;
         
-            doc.setFontSize(12);
+            doc.setFontSize(18);
             doc.text("Checklist:", 10, y);
             y += 8;
 
             // Split the checklist text into individual lines
             const checklistItems = checklistText.split("\n");
 
+            document.setFontSize(12);
             checklistItems.forEach(item => {
                 doc.text(item, 10, y);
                 y += 8;
