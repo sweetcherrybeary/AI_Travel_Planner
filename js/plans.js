@@ -143,7 +143,7 @@ document.addEventListener("DOMContentLoaded", function () {
         exportBtn.className = "export-button";
         exportBtn.innerText = "Export";
         exportBtn.addEventListener("click", () => {
-            const { jsPDF } = window.jsPDF; // Required if using via CDN
+            const { jsPDF } = window.jspdf;
 
             const originalTitle = titleDiv.innerText;
             const originalChecklist = card.dataset.checklist;
