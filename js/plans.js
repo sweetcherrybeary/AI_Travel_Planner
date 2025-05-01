@@ -164,18 +164,15 @@ document.addEventListener("DOMContentLoaded", function () {
             const checklistItems = checklistText.split("\n");
 
             checklistItems.forEach(item => {
-                let checkboxSymbol = "☐"; // Default to unchecked
                 let text = item;
         
                 if (item.startsWith("%û")) {
-                    checkboxSymbol = "☐";
                     text = item.substring(2).trim();  // Remove "%û"
                 } else if (item.startsWith("'")) {
-                    checkboxSymbol = "☑";
                     text = item.substring(1).trim();  // Remove "'"
                 }
         
-                doc.text(`${checkboxSymbol} ${text}`, 10, y);
+                doc.text(`${text}`, 10, y);
                 y += 8;
             });
         
