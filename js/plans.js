@@ -168,7 +168,7 @@ document.addEventListener("DOMContentLoaded", function () {
         
             // Save the PDF
             doc.save(`${originalTitle}.pdf`);
-        })
+        });
         
 
         const deleteBtn = document.createElement("button");
