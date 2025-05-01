@@ -154,7 +154,10 @@ document.addEventListener("DOMContentLoaded", function () {
             let y = 10;
         
             doc.setFontSize(24);
-            doc.text(`${originalTitle}`, 80, y);
+            const pageWidth = doc.internal.pageSize.getWidth();      // e.g. 210 for A4
+            const textWidth = doc.getTextWidth(originalTitle);       // dynamic width of the title
+            const x = (pageWidth - textWidth) / 2;                    // horizontal center
+            doc.text(`${originalTitle}`, x, y);
             y += 15;
         
             doc.setFontSize(12);
