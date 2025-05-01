@@ -154,7 +154,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let y = 10;
         
             doc.setFontSize(24);
-            doc.text(`${originalTitle}`, 10, y);
+            doc.text(`${originalTitle}`, 80, y);
             y += 15;
         
             doc.setFontSize(12);
@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const checklistItems = checklistText.split("\n");
 
             checklistItems.forEach(item => {
-                doc.text(item.slice(5), 10, y);
+                doc.text(item, 10, y);
                 y += 8;
             });
         
