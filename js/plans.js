@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const { jsPDF } = window.jspdf;
 
             const originalTitle = titleDiv.innerText;
-            const originalChecklist = card.dataset.checklist;
+            const originalChecklist = JSON.parse(card.dataset.checklist) || "";
             const originalInterests = card.dataset.interests;
         
             const doc = new jsPDF();
@@ -159,21 +159,13 @@ document.addEventListener("DOMContentLoaded", function () {
             doc.setFontSize(12);
             doc.text("Checklist:", 10, y);
             y += 8;
-            
-            let checklist;
-            try {
-                checklist = JSON.parse(originalChecklist);
-                checklist.forEach(item => {
-                    const checkbox = item.checked ? "☑" : "☐";
-                    doc.text(`${checkbox} ${item.text}`, 10, y);
-                    y += 8;
-                });
-            } catch (err) {
-                doc.text("Invalid checklist format", 10, y);
+
+            originalChecklist.forEach(item => {
+                doc.text(`${item}`);
                 y += 8;
-            }
+            });
         
-            y += 50;
+            y += 10;
             doc.setFontSize(12);
             doc.text(`${originalInterests}`, 10, y);
         
