@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function displayChecklistInModal() {
         const checklistData = getChecklistData();
-        const checklistOutput = checklistData.map(item => `${item.checked ? "[X]" : "[_]"} ${item.text}`).join('\n');
+        const checklistOutput = checklistData.map(item => `${item.checked ? "[X]" : "[ ]"} ${item.text}`).join('\n');
         checklistPreview.textContent = checklistOutput || "No items in checklist.";
     }
 
@@ -167,14 +167,14 @@ document.addEventListener("DOMContentLoaded", function () {
             // Split the checklist text into individual lines
             const checklistItems = checklistText.split("\n");
 
-            doc.setFontSize(12);
+            doc.setFontSize(14);
             checklistItems.forEach(item => {
                 doc.text(item, 10, y);
                 y += 8;
             });
         
             y += 5;
-            doc.setFontSize(12);
+            doc.setFontSize(14);
             doc.text(`${originalInterests}`, 10, y);
         
             // Save the PDF
