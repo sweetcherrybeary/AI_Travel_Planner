@@ -150,17 +150,14 @@ document.addEventListener("DOMContentLoaded", function () {
             const originalInterests = card.dataset.interests;
         
             const doc = new jsPDF();
-            y = 10; // vertical starting position
         
             doc.setFontSize(16);
-            doc.text(`Title: ${originalTitle}`, 10, y);
-            y += 10;
+            doc.text(`Title: ${originalTitle}`, 10, 10);
         
             doc.setFontSize(12);        
-            doc.text(`Checklist: \n ${originalChecklist}`, 10, y);
-            y += 150;
+            doc.text(`Checklist:\n${originalChecklist}`, 10, 30);
         
-            doc.text(`Interests: ${originalInterests}`, 10, y);
+            doc.text(`${originalInterests}`, 10, 250);
         
             // Save the PDF
             doc.save(`${originalTitle}.pdf`);
