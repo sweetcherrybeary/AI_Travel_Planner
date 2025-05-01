@@ -147,7 +147,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const originalTitle = titleDiv.innerText;
             const originalChecklist = card.dataset.checklist;
-            const checklistOutput = originalChecklist.map(item => `${item.checked ? '✓' : '◻'} ${item.text}`).join('\n');
             const originalInterests = card.dataset.interests;
         
             const doc = new jsPDF();
@@ -162,7 +161,7 @@ document.addEventListener("DOMContentLoaded", function () {
             doc.text(`Checklist:`, 10, y);
             y += 10;
 
-            doc.text(`${checklistOutput}`, 10, y);
+            doc.text(`${originalChecklist}`, 10, y);
             y += 10;
 
             doc.text(`${originalInterests}`, 10, y);
