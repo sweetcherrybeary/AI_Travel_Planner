@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const { jsPDF } = window.jspdf;
 
             const originalTitle = titleDiv.innerText;
-            const originalChecklist = JSON.parse(card.dataset.checklist) || "";
+            const checklistItems = card.querySelectorAll('.checklist li');
             const originalInterests = card.dataset.interests;
         
             const doc = new jsPDF();
@@ -160,8 +160,12 @@ document.addEventListener("DOMContentLoaded", function () {
             doc.text("Checklist:", 10, y);
             y += 8;
 
-            originalChecklist.forEach(item => {
-                doc.text(`${item}`);
+            checklistItems.forEach(item => {
+                const checkbox = item.querySelector('input[type="checkbox"]');
+                const text = item.querySelector('input[type="text"]').value; // Getting the text value
+        
+                const checkboxSymbol = checkbox.checked ? "☑" : "☐";
+                doc.text(`${checkboxSymbol} ${text}`, 10, y);
                 y += 8;
             });
         
