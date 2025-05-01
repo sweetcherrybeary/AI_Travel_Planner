@@ -142,7 +142,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const exportBtn = document.createElement("button");
         exportBtn.className = "export-button";
         exportBtn.innerText = "Export";
-        exportBtn.addEventListener("click", () => {
+        exportBtn.addEventListener("click", async () => {
             const { jsPDF } = window.jspdf;
 
             const originalTitle = titleDiv.innerText;
@@ -154,13 +154,10 @@ document.addEventListener("DOMContentLoaded", function () {
             let y = 10; // vertical starting position
         
             doc.setFontSize(16);
-            doc.text("Plan Export", 10, y);
-            y += 10;
-        
-            doc.setFontSize(12);
             doc.text(`Title: ${originalTitle}`, 10, y);
             y += 10;
         
+            doc.setFontSize(12);        
             doc.text(`Checklist: ${originalChecklist}`, 10, y);
             y += 10;
         
