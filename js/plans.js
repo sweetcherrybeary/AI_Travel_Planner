@@ -160,7 +160,7 @@ document.addEventListener("DOMContentLoaded", function () {
             doc.text("Checklist:", 10, y);
             y += 8;
         
-            doc.text(`${originalChecklist}`);
+            doc.text(`${originalChecklist}`, 10, y);
         
             y += 50;
             doc.setFontSize(12);
