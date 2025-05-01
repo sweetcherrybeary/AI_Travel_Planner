@@ -143,19 +143,31 @@ document.addEventListener("DOMContentLoaded", function () {
         exportBtn.className = "export-button";
         exportBtn.innerText = "Export";
         exportBtn.addEventListener("click", () => {
-            const beforeCount = document.querySelectorAll('.plan-card:not(.add-plan-card)').length;
+            const { jsPDF } = window.jsPDF; // Required if using via CDN
+
             const originalTitle = titleDiv.innerText;
-            const originalImgSrc = img.src;
             const originalChecklist = card.dataset.checklist;
             const originalInterests = card.dataset.interests;
         
-            const copy = createPlanCard(originalTitle, originalImgSrc, originalChecklist, originalInterests);
-            gallery.insertBefore(copy, addBtn);
+            const doc = new jsPDF();
         
-            setTimeout(() => {
-                testCopyPlan(beforeCount, originalTitle, originalImgSrc);
-            }, 50);
-            savePlansToStorage()
+            let y = 10; // vertical starting position
+        
+            doc.setFontSize(16);
+            doc.text("Plan Export", 10, y);
+            y += 10;
+        
+            doc.setFontSize(12);
+            doc.text(`Title: ${originalTitle}`, 10, y);
+            y += 10;
+        
+            doc.text(`Checklist: ${originalChecklist}`, 10, y);
+            y += 10;
+        
+            doc.text(`Interests: ${originalInterests}`, 10, y);
+        
+            // Save the PDF
+            doc.save(`${originalTitle || 'plan'}.pdf`);
         })
         
 
