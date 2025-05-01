@@ -150,8 +150,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const originalInterests = card.dataset.interests;
         
             const doc = new jsPDF();
-        
-            let y = 10; // vertical starting position
+            y = 10; // vertical starting position
         
             doc.setFontSize(16);
             doc.text(`Title: ${originalTitle}`, 10, y);
