@@ -158,10 +158,24 @@ document.addEventListener("DOMContentLoaded", function () {
             y += 10;
         
             doc.setFontSize(12);        
-            doc.text(`Checklist: ${originalChecklist}`, 10, y);
-            y += 10;
+            doc.text("Checklist:", 10, y);
+            y += 8;
+
+            try {
+               const checklistArray = JSON.parse(originalChecklist); // should be [[item, completed], ...]
+                checklistArray.forEach(([checked, item]) => {
+                    const symbol = checked === true ? "☑" : "☐";
+                    doc.text(`${symbol} ${item}`, 15, y);
+                    y += 8;
+                });
+            } catch (e) {
+                doc.text("Error parsing checklist.", 15, y);
+                y += 8;
+            }
+
+            y += 5;
         
-            doc.text(`Interests: ${originalInterests}`, 10, y);
+            doc.text(`${originalInterests}`, 10, y);
         
             // Save the PDF
             doc.save(`${originalTitle}.pdf`);
