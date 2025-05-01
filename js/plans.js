@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function displayChecklistInModal() {
         const checklistData = getChecklistData();
-        const checklistOutput = checklistData.map(item => `${item.checked ? '✓' : '◻'} ${item.text}`).join('\n');
+        const checklistOutput = checklistData.map(item => `${item.checked ? "[X]" : "[ ]"} ${item.text}`).join('\n');
         checklistPreview.textContent = checklistOutput || "No items in checklist.";
     }
 
