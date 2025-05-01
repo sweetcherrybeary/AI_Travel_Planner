@@ -160,19 +160,9 @@ document.addEventListener("DOMContentLoaded", function () {
             doc.text("Checklist:", 10, y);
             y += 8;
         
-            try {
-                const checklistArray = JSON.parse(originalChecklist); // Should be [["Task 1", true], ["Task 2", false]]
-                checklistArray.forEach(([checked, item]) => {
-                    const symbol = checked ? "☑" : "☐";
-                    doc.text(`${symbol} ${item}`, 15, y);
-                    y += 8;
-                });
-            } catch (err) {
-                doc.text("Invalid checklist format.", 15, y);
-                y += 8;
-            }
+            doc.text(`${originalChecklist}`);
         
-            y += 10;
+            y += 50;
             doc.setFontSize(12);
             doc.text(`${originalInterests}`, 10, y);
         
