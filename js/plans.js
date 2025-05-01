@@ -162,7 +162,7 @@ document.addEventListener("DOMContentLoaded", function () {
             doc.text('Checklist:', 10, y);
             y += 10;
 
-            doc.text('${checklistOutput', 10, y);
+            doc.text('${checklistOutput}', 10, y);
             y += 10;
 
             doc.text(`${originalInterests}`, 10, y);
