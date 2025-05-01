@@ -150,7 +150,9 @@ document.addEventListener("DOMContentLoaded", function () {
             const originalInterests = card.dataset.interests;
         
             const doc = new jsPDF();
-            doc.addFileToVFS("NotoSans-Regular.ttf", notoSansFontBase64);
+
+            const planFont = "../js/NotoSans-VariableFont_wdth,wght-normal.js"
+            doc.addFileToVFS("NotoSans-Regular.ttf", planFont);
             doc.addFont("NotoSans-Regular.ttf", "NotoSans", "normal");
             doc.setFont("NotoSans"); // use the font
             let y = 10;
