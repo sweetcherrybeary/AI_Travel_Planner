@@ -150,14 +150,31 @@ document.addEventListener("DOMContentLoaded", function () {
             const originalInterests = card.dataset.interests;
         
             const doc = new jsPDF();
+            let y = 10;
         
             doc.setFontSize(16);
-            doc.text(`Title: ${originalTitle}`, 10, 10);
+            doc.text(`Title: ${originalTitle}`, 10, y);
+            y += 10;
         
-            doc.setFontSize(12);        
-            doc.text(`Checklist:\n${originalChecklist}`, 10, 30);
+            doc.setFontSize(12);
+            doc.text("Checklist:", 10, y);
+            y += 8;
         
-            doc.text(`${originalInterests}`, 10, 250);
+            try {
+                const checklistArray = JSON.parse(originalChecklist); // Should be [["Task 1", true], ["Task 2", false]]
+                checklistArray.forEach(([checked, item]) => {
+                    const symbol = checked ? "☑" : "☐";
+                    doc.text(`${symbol} ${item}`, 15, y);
+                    y += 8;
+                });
+            } catch (err) {
+                doc.text("Invalid checklist format.", 15, y);
+                y += 8;
+            }
+        
+            y += 10;
+            doc.setFontSize(12);
+            doc.text(`${originalInterests}`, 10, y);
         
             // Save the PDF
             doc.save(`${originalTitle}.pdf`);
