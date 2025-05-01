@@ -164,7 +164,7 @@ document.addEventListener("DOMContentLoaded", function () {
             doc.text(`Interests: ${originalInterests}`, 10, y);
         
             // Save the PDF
-            doc.save(`${originalTitle || 'plan'}.pdf`);
+            doc.save(`${originalTitle}.pdf`);
         })
         
 
