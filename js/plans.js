@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const { jsPDF } = window.jspdf;
 
             const originalTitle = titleDiv.innerText;
-            const checklistText = card.dataset.checklist;
+            const checklistText = viewChecklistContent.textContent;
             const originalInterests = card.dataset.interests;
         
             const doc = new jsPDF();
