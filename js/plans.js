@@ -158,17 +158,14 @@ document.addEventListener("DOMContentLoaded", function () {
             y += 10;
         
             doc.setFontSize(12);        
-            doc.text(`Checklist:`, 10, y);
+            doc.text(`Checklist: \n ${originalChecklist}`, 10, y);
             y += 10;
-
-            doc.text(`${originalChecklist}`, 10, y);
-            y += 10;
-
-            doc.text(`${originalInterests}`, 10, y);
+        
+            doc.text(`Interests: ${originalInterests}`, 10, y);
         
             // Save the PDF
             doc.save(`${originalTitle}.pdf`);
-        });
+        })
         
 
         const deleteBtn = document.createElement("button");
