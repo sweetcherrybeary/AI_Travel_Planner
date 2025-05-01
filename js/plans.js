@@ -164,7 +164,8 @@ document.addEventListener("DOMContentLoaded", function () {
             const checklistItems = checklistText.split("\n");
 
             checklistItems.forEach(item => {
-                doc.text(item.slice(1), 10, y);  // Directly add the text, which includes the checkbox symbols (✓ or ◻)
+                const cleanedItem = item.substring(1);  // Removes the first character
+                doc.text(cleanedItem, 10, y);
                 y += 8;
             });
         
